@@ -1,5 +1,11 @@
 {
   "name": "insta",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap-material-design": "^4.1.2"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/harunotentou/insta.git",
+  "license": "MIT"
 }
