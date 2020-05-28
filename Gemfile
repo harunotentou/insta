@@ -42,6 +42,9 @@ gem 'sorcery' #ユーザ認証機能を簡単に実装できるライブラリ
 gem 'redis-rails'
 gem 'annotate'
 
+gem 'jquery-rails'
+gem 'popper_js'
+gem 'font-awesome-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
