@@ -10,6 +10,7 @@ class UsersController < ApplicationController
             flash[:success] = "ユーザーを作成しました"
             redirect_to root_path
         else
+            flash[:danger] = "ユーザーの作成に失敗しました"
             render :new
         end
     end
