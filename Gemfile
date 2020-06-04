@@ -50,6 +50,7 @@ gem 'rails-i18n', '~> 5.1' #日本語化
 
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
