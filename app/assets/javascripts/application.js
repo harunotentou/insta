@@ -10,9 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require activestorage
-//= require_tree .
-//= require bootstrap-material-design/dist/js/bootstrap-material-design.js
 //= require jquery3
 //= require popper
+//= require rails-ujs
+//= require activestorage
+//= require bootstrap-material-design/dist/js/bootstrap-material-design.js
+//= require swiper/js/swiper.js
+//= require swiper.js
+//= require_tree .
