@@ -2,9 +2,9 @@
   .image-box
     .swiper-container
       .swiper-wrapper
-        - @post.picture.each do |pic|
+        - @post.pictures.each do |picture|
           .swiper-slide
-            = image_tag pic.url
+            = image_tag picture.url
       .swiper-pagination
   .image-info-box
     .profile-box.p-3

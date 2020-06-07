@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :text(65535)
-#  picture    :string(255)
+#  pictures   :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint
@@ -20,8 +20,10 @@
 class Post < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
-  validates :picture, presence: true
+  validates :pictures, presence: true
   validates :content, { presence: true, length: { maximum: 1000 } }
-  serialize :picture, JSON
-  mount_uploaders :picture, PictureUploader
+  #テキスト型のカラムに配列を格納するために、形式をjson型にしている
+  serialize :pictures, JSON
+  #画像を複数枚保存するので、mount_uploaderはmount_uploadersとなる
+  mount_uploaders :pictures, PictureUploader
 end

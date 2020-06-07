@@ -50,7 +50,8 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, picture: [])
+      #picturesは配列でパラメータを受け取りたい
+    params.require(:post).permit(:content, pictures: [])
   end
 
   def correct_user?

@@ -12,9 +12,9 @@
   = link_to post_path(post) do
     .swiper-container
       .swiper-wrapper
-        - post.picture.each do |pic|
+        - post.pictures.each do |picture|
           .swiper-slide
-            = image_tag pic.url, class: 'card-img-top'
+            = image_tag picture.url, class: 'card-img-top'
       .swiper-pagination
   .card-body
     .card-text

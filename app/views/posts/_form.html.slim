@@ -1,10 +1,10 @@
 = form_with model: post, local: true do |f|
   = render 'shared/error_messages', object: post
   .form-group
-    = f.label :picture
-    = f.file_field :picture, multiple: true, class: 'form-control'
-    - post.picture.each do |pic|
-      = image_tag pic.url, size: '100x100', class: 'image-thumbnail'
+    = f.label :pictures
+    = f.file_field :pictures, multiple: true, class: 'form-control'
+    - post.pictures.each do |picture|
+      = image_tag picture.url, size: '100x100', class: 'image-thumbnail'
   .form-group
     = f.label :content
     = f.text_area :content, class: 'form-control'
