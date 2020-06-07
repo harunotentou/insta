@@ -11,11 +11,11 @@ module Insta
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.generators do |g|
-      g.skip_routes true #ルーティングを追加しない
-      g.assets false #アセットファイルを生成しない
-      g.test_framework false #テストを生成しない
+      g.skip_routes true # ルーティングを追加しない
+      g.assets false # アセットファイルを生成しない
+      g.test_framework false # テストを生成しない
     end
-    config.time_zone = 'Tokyo' #タイムゾーンを設定
+    config.time_zone = 'Tokyo' # タイムゾーンを設定
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     # Settings in config/environments/* take precedence over those specified here.

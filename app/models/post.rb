@@ -21,7 +21,7 @@ class Post < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :picture, presence: true
-  validates :content, {presence: true,length:{maximum:1000}}
+  validates :content, { presence: true, length: { maximum: 1000 } }
   serialize :picture, JSON
   mount_uploaders :picture, PictureUploader
 end
