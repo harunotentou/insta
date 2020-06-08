@@ -21,8 +21,8 @@ class Post < ApplicationRecord
   belongs_to :user
   validates :pictures, presence: true
   validates :content, { presence: true, length: { maximum: 1000 } }
-  #テキスト型のカラムに配列を格納するために、形式をjson型にしている
+  # テキスト型のカラムに配列を格納するために、形式をjson型にしている
   serialize :pictures, JSON
-  #画像を複数枚保存するので、mount_uploaderはmount_uploadersとなる
+  # 画像を複数枚保存するので、mount_uploaderはmount_uploadersとなる
   mount_uploaders :pictures, PictureUploader
 end
