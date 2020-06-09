@@ -1,0 +1,11 @@
+= form_with model: post, local: true do |f|
+  = render 'shared/error_messages', object: post
+  .form-group
+    = f.label :pictures
+    = f.file_field :pictures, multiple: true, class: 'form-control'
+    - post.pictures.each do |picture|
+      = image_tag picture.url, size: '100x100', class: 'image-thumbnail'
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control'
+  = f.submit class: 'btn btn-primary btn-raised'
