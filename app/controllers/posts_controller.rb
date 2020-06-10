@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
 
   def index
-    # N+1問題に対応
-    @posts = Post.all.includes(:user).order(created_at: :desc)
+    # N+1問題、ページネーションに対応
+    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
