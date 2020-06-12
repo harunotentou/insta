@@ -23,7 +23,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, uniqueness: true
   has_many :posts, dependent: :destroy
-  has_many :comment
+  has_many :comment, dependent: :destroy
 
   def own(object)
     id == object.user_id
