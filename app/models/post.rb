@@ -19,7 +19,8 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comment, dependent: :destroy
+  # コメントとの関連付け
+  has_many :comments, dependent: :destroy
   validates :pictures, presence: true
   validates :content, { presence: true, length: { maximum: 1000 } }
   # テキスト型のカラムに配列を格納するために、形式をjson型にしている

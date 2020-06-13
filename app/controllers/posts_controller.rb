@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     # N+1問題、ページネーションに対応
-    @posts = Post.all.includes(:user).order(created_at: :desc).page(params[:page])
+    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -24,6 +24,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # コメント表示のため
+    @comments = @post.comments.order(created_at: :desc)
+    # コメント作成フォームのため
+    @comment = Comment.new
   end
 
   def edit
