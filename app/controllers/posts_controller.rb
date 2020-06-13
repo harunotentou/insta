@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     # コメント表示のため
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.includes(:user).order(created_at: :desc)
     # コメント作成フォームのため
     @comment = Comment.new
   end
