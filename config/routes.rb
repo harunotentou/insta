@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   # ネストしたルーティング（shallowルーティング）
   resources :posts, shallow: true do
-    resources :comments, only: [:create, :edit, :update, :destroy]
+    resources :comments, only: %i[create edit update destroy]
   end
   root      'posts#index'
   get       '/login'    =>  'sessions#new'
