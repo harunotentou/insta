@@ -22,10 +22,11 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, uniqueness: true
-
   has_many :posts, dependent: :destroy
+  # コメントとの関連付け
+  has_many :comments, dependent: :destroy
 
-  def own(object)
+  def own?(object)
     id == object.user_id
   end
 end
