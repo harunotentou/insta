@@ -18,7 +18,12 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
+  # ユーザーとの関連付け
   belongs_to :user
+  # いいねとの関連付け
+  has_many :likes, dependent: :destroy
+  # いいねされたユーザーとの関連付け
+  has_many :liked_user, through: :likes, source: :user
   # コメントとの関連付け
   has_many :comments, dependent: :destroy
   validates :pictures, presence: true

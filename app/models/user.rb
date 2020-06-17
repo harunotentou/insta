@@ -22,7 +22,12 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, uniqueness: true
+  # 投稿との関連付け
   has_many :posts, dependent: :destroy
+  # いいねとの関連付け
+  has_many :likes, dependent: :destroy
+  # いいねをした投稿と関連付け
+  has_many :liked_posts, through: :likes, source: :post
   # コメントとの関連付け
   has_many :comments, dependent: :destroy
 
