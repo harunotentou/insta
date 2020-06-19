@@ -34,4 +34,20 @@ class User < ApplicationRecord
   def own?(object)
     id == object.user_id
   end
+  
+  def like(post)
+    # ユーザーと引数で渡された投稿に紐づくいいねを作成
+    self.likes.create(post_id: post.id)
+  end
+  
+  def unlike(post)
+    # ユーザーと引数で渡された投稿に紐づくいいねを削除
+    self.likes.find_by(post_id: post.id).destroy
+  end
+  
+  def like?(post)
+    # ユーザーのいいねした投稿の中に、引数で渡された投稿があるかどうかを調べる
+    self.liked_posts.include?(post)
+  end
+  
 end

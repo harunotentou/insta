@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :posts, shallow: true do
     resources :comments, only: %i[create edit update destroy]
   end
+  # like
+  # いいね機能のルーティング
+  resources :likes, only: %i[create destroy]
   root      'posts#index'
   get       '/login'    =>  'sessions#new'
   post      '/login'    =>  'sessions#create'
