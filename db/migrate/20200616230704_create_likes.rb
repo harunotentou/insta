@@ -6,5 +6,7 @@ class CreateLikes < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    # DB側にユニーク制約を忘れていたので作り直し
+    add_index :likes, [:post_id, :user_id], unique: true
   end
 end
