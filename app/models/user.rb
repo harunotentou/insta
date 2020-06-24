@@ -22,11 +22,31 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, uniqueness: true
+  # 投稿との関連付け
   has_many :posts, dependent: :destroy
+  # いいねとの関連付け
+  has_many :likes, dependent: :destroy
+  # いいねをした投稿と関連付け
+  has_many :liked_posts, through: :likes, source: :post
   # コメントとの関連付け
   has_many :comments, dependent: :destroy
 
   def own?(object)
     id == object.user_id
+  end
+
+  def like(post)
+    # ユーザーと引数で渡された投稿に紐づくいいねを作成
+    likes.create(post_id: post.id)
+  end
+
+  def unlike(post)
+    # ユーザーと引数で渡された投稿に紐づくいいねを削除
+    likes.find_by(post_id: post.id).destroy
+  end
+
+  def like?(post)
+    # ユーザーのいいねした投稿の中に、引数で渡された投稿があるかどうかを調べる
+    liked_posts.include?(post)
   end
 end

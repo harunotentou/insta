@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_login, only: %i[create edit update destroy]
   def create
     # ログインしているユーザーに紐づけたコメントを作成
     @comment = current_user.comments.build(comment_params)
