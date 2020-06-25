@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def index
     @users = User.order(created_at: :desc).page(params[:page])
   end
-  
+
   def new
     @user = User.new
   end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     @user = User.find(params[:id])
   end

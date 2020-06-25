@@ -31,14 +31,14 @@ class User < ApplicationRecord
   # コメントとの関連付け
   has_many :comments, dependent: :destroy
   # フォローしているユーザーとの関連付け
-  has_many :active_relationships, class_name:  "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent:   :destroy
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: 'follower_id',
+                                  dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   # フォローされているユーザーとの関連付け
-  has_many :passive_relationships, class_name:  "Relationship",
-                                   foreign_key: "followed_id",
-                                   dependent:   :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
   def own?(object)
@@ -59,14 +59,14 @@ class User < ApplicationRecord
     # ユーザーのいいねした投稿の中に、引数で渡された投稿があるかどうかを調べる
     liked_posts.include?(post)
   end
-  
+
   def following?(other_user)
     # フォローしているユーザーの中に引数にとったユーザーがいるかどうか
     following.include?(other_user)
   end
-  
+
   def feed
     # ユーザー自身とフォローしているユーザーの投稿を返す
-    Post.where("user_id IN (?) OR user_id = ?", following_ids, id)
+    Post.where('user_id IN (?) OR user_id = ?', following_ids, id)
   end
 end
