@@ -59,4 +59,14 @@ class User < ApplicationRecord
     # ユーザーのいいねした投稿の中に、引数で渡された投稿があるかどうかを調べる
     liked_posts.include?(post)
   end
+  
+  def following?(other_user)
+    # フォローしているユーザーの中に引数にとったユーザーがいるかどうか
+    following.include?(other_user)
+  end
+  
+  def feed
+    # ユーザー自身とフォローしているユーザーの投稿を返す
+    Post.where("user_id IN (?) OR user_id = ?", following_ids, id)
+  end
 end

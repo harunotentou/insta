@@ -2,8 +2,16 @@ class PostsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
 
   def index
-    # N+1問題、ページネーションに対応
-    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page])
+    if current_user
+      # ログインユーザー自身と、フォローしているユーザーの投稿
+      @posts = current_user.feed.includes(:user).order(created_at: :desc).page(params[:page])
+    else
+      # N+1問題、ページネーションに対応
+      @posts = Post.includes(:user).order(created_at: :desc).page(params[:page])
+    end
+    
+    #ユーザーを登録が新しい順に５人
+    @users = User.order(created_at: :desc).limit(5)
   end
 
   def new
