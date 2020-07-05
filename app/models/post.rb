@@ -32,7 +32,7 @@ class Post < ApplicationRecord
   serialize :pictures, JSON
   # 画像を複数枚保存するので、mount_uploaderはmount_uploadersとなる
   mount_uploaders :pictures, PictureUploader
-  
+
   # 共通のクエリの処理を設定し、それをメソッド（()の中は引数）のように使えるようにする
   scope :content_contain, ->(word) { where('content LIKE ?', "%#{word}%") }
 end

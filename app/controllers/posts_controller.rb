@@ -62,7 +62,7 @@ class PostsController < ApplicationController
     flash[:success] = '投稿を削除しました'
     redirect_to posts_path
   end
-  
+
   def search
     @posts = @search_form.search.includes(:user).page(params[:page])
   end

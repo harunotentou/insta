@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
-   # ヘッダー部分（=共通部分）に検索フォームを置くのでApplicationControllerに実装する
+  # ヘッダー部分（=共通部分）に検索フォームを置くのでApplicationControllerに実装する
   def set_search_posts_form
     @search_form = SearchPostsForm.new(search_post_params)
   end
