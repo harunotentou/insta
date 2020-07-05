@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[index new create show]
   # ネストしたルーティング（shallowルーティング）
   resources :posts, shallow: true do
+    # searchアクションのルーティング
+    collection do
+      get 'search'
+    end
     resources :comments, only: %i[create edit update destroy]
   end
   # like
