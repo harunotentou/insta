@@ -63,6 +63,10 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def search
+    @posts = @search_form.search.includes(:user).page(params[:page])
+  end
+
   private
 
   def post_params
