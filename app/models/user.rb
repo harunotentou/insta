@@ -17,6 +17,8 @@
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  # avatarアップローダーとの紐づけ
+  mount_uploader :avatar, AvatarUploader
 
   validates :username, presence: true
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
