@@ -24,4 +24,11 @@ class Like < ApplicationRecord
   belongs_to :user
   # 一人が一つの投稿に対して一つしかいいねをつけられないように
   validates :user_id, uniqueness: { scope: :post_id }
+
+  private
+
+  def create_activities
+    Activity.create(subject: self, user: post.user, action_type: :liked_to_own_post)
+  end
+end
 end

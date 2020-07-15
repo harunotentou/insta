@@ -20,4 +20,10 @@ class Relationship < ApplicationRecord
   belongs_to :followed, class_name: 'User'
   validates :followed_id, presence: true
   validates :follower_id, presence: true
+
+  private
+
+  def create_activities
+    Activity.create(subject: self, user: followed, action_type: :followed_me)
+  end
 end

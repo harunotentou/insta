@@ -23,4 +23,10 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
   validates :body, presence: true, length: { maximum: 1000 }
+
+  private
+
+  def create_activities
+    Activity.create(subject: self, user: post.user, action_type: :commented_to_own_post)
+  end
 end
