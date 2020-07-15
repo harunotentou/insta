@@ -22,6 +22,8 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
+  # アクティビティとのポリモーフィック関連付け
+  has_one :activity, as: :subject, dependent: :destroy
   validates :body, presence: true, length: { maximum: 1000 }
 
   private

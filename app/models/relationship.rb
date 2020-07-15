@@ -18,6 +18,8 @@ class Relationship < ApplicationRecord
   # userモデルとの関連付け
   belongs_to :follower, class_name: 'User'
   belongs_to :followed, class_name: 'User'
+  # アクティビティとのポリモーフィック関連付け
+  has_one :activity, as: :subject, dependent: :destroy
   validates :followed_id, presence: true
   validates :follower_id, presence: true
 
