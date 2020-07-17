@@ -25,7 +25,8 @@ class Comment < ApplicationRecord
   # アクティビティとのポリモーフィック関連付け
   has_one :activity, as: :subject, dependent: :destroy
   validates :body, presence: true, length: { maximum: 1000 }
-
+  # コールバックの設定
+  after_create_commit :create_activities
   private
 
   def create_activities

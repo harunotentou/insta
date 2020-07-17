@@ -22,7 +22,8 @@ class Relationship < ApplicationRecord
   has_one :activity, as: :subject, dependent: :destroy
   validates :followed_id, presence: true
   validates :follower_id, presence: true
-
+  # コールバックの設定
+  after_create_commit :create_activities
   private
 
   def create_activities
