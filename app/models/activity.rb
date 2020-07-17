@@ -23,7 +23,20 @@
 class Activity < ApplicationRecord
   belongs_to :subject, polymorphic: true
   belongs_to :user
-  
+  # enumとは列挙型、特定のカラムで用いる固定値がある程度決まっている際に用いる
   enum action_type: { commented_to_own_post: 0, liked_to_own_post: 1, followed_me: 2 }
   enum read: { unread: false, read: true }
+  # ページ遷移先
+  def redirect_path
+    # シンボルに変換
+    case action_type.to_sym
+    when :commented_to_own_post
+      # anchorを利用してページ遷移先の位置を指定
+      post_path(subject.post, anchor: "comment-#{subject.id}")
+    when :liked_to_own_post
+      post_path(subject.post)
+    when :followed_me
+      user_path(subject.follower)
+    end
+  end
 end
