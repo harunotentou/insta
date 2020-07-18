@@ -22,6 +22,8 @@
 class Like < ApplicationRecord
   belongs_to :post
   belongs_to :user
+  # アクティビティとのポリモーフィック関連付け
+  has_one :activity, as: :subject, dependent: :destroy
   # 一人が一つの投稿に対して一つしかいいねをつけられないように
   validates :user_id, uniqueness: { scope: :post_id }
   # コールバックの設定

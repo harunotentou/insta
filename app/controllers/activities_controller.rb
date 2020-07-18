@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class ActivitiesController < ApplicationController
   before_action :require_login, only: %i[read]
 
   def read
