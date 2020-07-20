@@ -14,8 +14,13 @@ Rails.application.routes.draw do
   resources :likes, only: %i[create destroy]
   # follow_unfollow機能のルーティング
   resources :relationships, only: %i[create destroy]
+  # acitivityのルーティング
+  resources :activities, only: [] do
+    patch :read, on: :member
+  end
   namespace :mypage do
     resource :account, only: %i[edit update]
+    resources :activities, only: %i[index]
   end
   root      'posts#index'
   get       '/login'    =>  'sessions#new'

@@ -18,6 +18,15 @@ class Relationship < ApplicationRecord
   # userモデルとの関連付け
   belongs_to :follower, class_name: 'User'
   belongs_to :followed, class_name: 'User'
+  # アクティビティとのポリモーフィック関連付け
+  has_one :activity, as: :subject, dependent: :destroy
   validates :followed_id, presence: true
   validates :follower_id, presence: true
+  # コールバックの設定
+  after_create_commit :create_activities
+  private
+
+  def create_activities
+    Activity.create(subject: self, user: followed, action_type: :followed_me)
+  end
 end

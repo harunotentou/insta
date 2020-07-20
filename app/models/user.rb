@@ -43,6 +43,8 @@ class User < ApplicationRecord
                                    foreign_key: 'followed_id',
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
+  # アクティビティとの関連付け
+  has_many :activities, dependent: :destroy
 
   def own?(object)
     id == object.user_id
