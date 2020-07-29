@@ -70,6 +70,7 @@ group :development do
   gem 'binding_of_caller' # エラー画面にirbをつけてくれる
   gem 'pry-byebug' # バグを修正するためのツール
   gem 'pry-rails' # Rails用に使われるデバックツール
+  gem 'letter_opener_web' # メールをブラウザで確認できる
 end
 
 group :test do
