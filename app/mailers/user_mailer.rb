@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.comment_post.subject
   #
   def comment_post
-     # .withで渡されたパラメータをインスタンス変数に代入
+    # .withで渡されたパラメータをインスタンス変数に代入
     @user_to = params[:user_to]
     @user_from = params[:user_from]
     @comment = params[:comment]
@@ -34,8 +34,10 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.follow.subject
   #
   def follow
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+    # .withで渡されたパラメータをインスタンス変数に代入
+    @user_to = params[:user_to]
+    @user_from = params[:user_from]
+    # mailメソッドで宛先と題名を指定
+    mail(to: @user_to.email, subject: '#{@user_from.username}があなたをフォローしました')
   end
 end

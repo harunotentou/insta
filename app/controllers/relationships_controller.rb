@@ -4,6 +4,8 @@ class RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
     # ログインユーザーが@userをフォローする
     current_user.active_relationships.create(followed_id: params[:user_id])
+    # .withでメイラーにパラメーターを渡してメール送信
+    UserMailer.with(user_to: @user, user_from: current_user).follow.deliver_later
   end
 
   def destroy
