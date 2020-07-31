@@ -54,6 +54,8 @@ gem 'faker'
 
 gem 'kaminari' # paginationを実装
 
+gem 'config'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -70,6 +72,7 @@ group :development do
   gem 'binding_of_caller' # エラー画面にirbをつけてくれる
   gem 'pry-byebug' # バグを修正するためのツール
   gem 'pry-rails' # Rails用に使われるデバックツール
+  gem 'letter_opener_web' # メールをブラウザで確認できる
 end
 
 group :test do

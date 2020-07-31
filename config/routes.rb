@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resource :account, only: %i[edit update]
     resources :activities, only: %i[index]
   end
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root      'posts#index'
   get       '/login'    =>  'sessions#new'
   post      '/login'    =>  'sessions#create'

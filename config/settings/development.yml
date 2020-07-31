@@ -1,0 +1,2 @@
+default_url_options:
+  { protocol: 'https', host: 'https://81ec5c9dbfef4404958ab0a524753891.vfs.cloud9.us-east-2.amazonaws.com/' }
