@@ -18,6 +18,7 @@ module Insta
     config.time_zone = 'Tokyo' # タイムゾーンを設定
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('path/to').to_s]
+    config.active_job.queue_adapter = :sidekiq # Active Job のキューアダプタとして Sidekiq を使用することを宣言
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
