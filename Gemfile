@@ -56,6 +56,7 @@ gem 'kaminari' # paginationを実装
 
 gem 'config'
 gem 'sidekiq' # 非同期処理を行うためのライブラリ
+gem 'sinatra'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
