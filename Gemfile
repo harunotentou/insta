@@ -55,7 +55,7 @@ gem 'faker'
 gem 'kaminari' # paginationを実装
 
 gem 'config'
-gem 'sidekiq' # 非同期処理を行うためのライブラリ
+gem 'sidekiq', '~> 5.2.8'
 gem 'sinatra'
 
 group :development, :test do
