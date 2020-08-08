@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: %i[index new create show]
@@ -22,7 +24,10 @@ Rails.application.routes.draw do
     resource :account, only: %i[edit update]
     resources :activities, only: %i[index]
   end
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+    mount Sidekiq::Web, at: '/sidekiq'
+  end
   root      'posts#index'
   get       '/login'    =>  'sessions#new'
   post      '/login'    =>  'sessions#create'

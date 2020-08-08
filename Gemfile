@@ -55,6 +55,8 @@ gem 'faker'
 gem 'kaminari' # paginationを実装
 
 gem 'config'
+gem 'sidekiq', '~> 5.2.8'
+gem 'sinatra'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
