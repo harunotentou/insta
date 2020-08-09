@@ -7,7 +7,7 @@ class LikesController < ApplicationController
     if @post.user.notification_on_like
       # .withでメイラーにパラメーターを渡してメール送信
       UserMailer.with(user_to: @post.user, user_from: current_user, post: @post).like_post.deliver_later
-    end  
+    end
   end
 
   def destroy

@@ -61,7 +61,7 @@ Rails.application.configure do
 
   config.session_store :redis_store, servers: 'redis://localhost:6379', expire_after: 1.day
   BetterErrors::Middleware.allow_ip! '0.0.0.0/0' # cloud9でbetter_errorsをつかえるように
-  
+
   # 定数として設定
   config.action_mailer.default_url_options = Settings.default_url_options.to_h
   # 配信方法を指定

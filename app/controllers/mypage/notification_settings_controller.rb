@@ -18,7 +18,7 @@ class Mypage::NotificationSettingsController < Mypage::BaseController
   private
 
   def notification_settings_params
-      # 通知設定をストロングパラメーターで受け取る
+    # 通知設定をストロングパラメーターで受け取る
     params.require(:user).permit(:notification_on_comment, :notification_on_like, :notification_on_follow)
   end
 end

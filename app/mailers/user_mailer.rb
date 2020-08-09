@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -11,7 +10,7 @@ class UserMailer < ApplicationMailer
     @user_from = params[:user_from]
     @post = params[:post]
     # mailメソッドで宛先と題名を指定
-    mail(to: @user_to.email, subject: '#{@user_from.username}があなたの投稿にいいねしました')
+    mail(to: @user_to.email, subject: "#{@user_from.username}があなたの投稿にいいねしました")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -25,7 +24,7 @@ class UserMailer < ApplicationMailer
     @user_from = params[:user_from]
     @comment = params[:comment]
     # mailメソッドで宛先と題名を指定
-    mail(to: @user_to.email, subject: '#{@user_from.username}があなたの投稿にコメントしました')
+    mail(to: @user_to.email, subject: "#{@user_from.username}があなたの投稿にコメントしました")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -38,6 +37,6 @@ class UserMailer < ApplicationMailer
     @user_to = params[:user_to]
     @user_from = params[:user_from]
     # mailメソッドで宛先と題名を指定
-    mail(to: @user_to.email, subject: '#{@user_from.username}があなたをフォローしました')
+    mail(to: @user_to.email, subject: "#{@user_from.username}があなたをフォローしました")
   end
 end
