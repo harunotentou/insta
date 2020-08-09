@@ -4,8 +4,10 @@ class CommentsController < ApplicationController
     # ログインしているユーザーに紐づけたコメントを作成
     @comment = current_user.comments.build(comment_params)
     @comment.save
-    # .withでメイラーにパラメーターを渡してメール送信
-    UserMailer.with(user_to: @comment.post.user, user_from: current_user, comment: @comment).comment_post.deliver_later
+    if @comment.post.user.notification_on_comment
+      # .withでメイラーにパラメーターを渡してメール送信
+      UserMailer.with(user_to: @comment.post.user, user_from: current_user, comment: @comment).comment_post.deliver_later
+    end
   end
 
   def edit
