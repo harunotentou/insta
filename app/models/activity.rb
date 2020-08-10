@@ -4,7 +4,7 @@
 #
 #  id           :bigint           not null, primary key
 #  action_type  :integer          not null
-#  read         :boolean          default(FALSE), not null
+#  read         :boolean          default("unread"), not null
 #  subject_type :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -26,7 +26,7 @@ class Activity < ApplicationRecord
   belongs_to :subject, polymorphic: true
   belongs_to :user
 
-  scope :recent, ->(count) { order(created_at: :desc).limit(count)}
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
 
   # enumとは列挙型、特定のカラムで用いる固定値がある程度決まっている際に用いる
   enum action_type: { commented_to_own_post: 0, liked_to_own_post: 1, followed_me: 2 }

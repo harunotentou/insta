@@ -28,6 +28,7 @@ class Like < ApplicationRecord
   validates :user_id, uniqueness: { scope: :post_id }
   # コールバックの設定
   after_create_commit :create_activities
+
   private
 
   def create_activities
