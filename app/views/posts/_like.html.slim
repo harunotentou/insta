@@ -1,3 +1,3 @@
 / likes_pathにオプションでクエリパラメータとしてpost_id: post.idを渡している
-= link_to likes_path(post_id: post.id), method: :post, remote: true do
+= link_to likes_path(post_id: post.id), method: :post, class: 'like-button', remote: true do
   = icon 'far', 'heart', class: 'fa-lg'
