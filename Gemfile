@@ -55,7 +55,7 @@ gem 'faker'
 gem 'kaminari' # paginationを実装
 
 gem 'config'
-gem 'sidekiq', '~> 5.2.8'
+gem 'sidekiq', '~> 6.4.0'
 gem 'sinatra'
 
 group :development, :test do
